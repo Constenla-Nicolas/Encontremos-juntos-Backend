@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver;
 
-import com.Productos.model.ProductModel;
-import com.Productos.service.ProductService;
+import com.example.model.PetModel;
+import com.example.service.PetService;
 
 @RestController
 

@@ -46,6 +46,7 @@ public class MainController {
     @RequestMapping(value = "/api/get", method = RequestMethod.GET)
     @ResponseBody
     public List<PetModel> getAllPets(){
+        System.out.println("a");
         return PetService.getPets();
     }
     @RequestMapping(value = "/api/sortbyprice", method = RequestMethod.GET)

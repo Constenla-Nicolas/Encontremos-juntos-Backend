@@ -19,11 +19,11 @@ public class PetModel {
     private int age;
      
 
-    public ProductModel(){
+    public PetModel(){
        
     }
 
-    public ProductModel(int id,String name, String description, String race, int age){
+    public PetModel(int id,String name, String description, String race, int age){
         this.name=name;
         this.description=description;
         this.id=id;
@@ -34,7 +34,7 @@ public class PetModel {
     }
 //.
 
-public ProductModel(String name, String description,String race, int age){
+public PetModel(String name, String description,String race, int age){
     this.name=name;
     this.description=description;
     this.race=race;

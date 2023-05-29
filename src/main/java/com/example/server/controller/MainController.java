@@ -33,59 +33,59 @@ public class MainController {
     
     
   @Autowired
-  private  ProductService productService;
+  private  PetService PetService;
  
  
 
     @RequestMapping(value =  "/api", method = RequestMethod.GET)
-    public List<ProductModel> main(){
-        return productService.getProducts();
+    public List<PetModel> main(){
+        return PetService.getPets();
     }
     
 
     @RequestMapping(value = "/api/get", method = RequestMethod.GET)
     @ResponseBody
-    public List<ProductModel> getAllProducts(){
-        return productService.getProducts();
+    public List<PetModel> getAllPets(){
+        return PetService.getPets();
     }
     @RequestMapping(value = "/api/sortbyprice", method = RequestMethod.GET)
     @ResponseBody
-    public List<ProductModel> getSortedPrice(){
-        return productService.getSortedPrice();
+    public List<PetModel> getSortedPrice(){
+        return PetService.getSortedPrice();
     }
-    @RequestMapping(value = "/api/getProduct/{productId}", method = RequestMethod.GET)
-    public List<ProductModel> getProductById(@PathVariable("productId") String id){
+    @RequestMapping(value = "/api/getPet/{PetId}", method = RequestMethod.GET)
+    public List<PetModel> getPetById(@PathVariable("PetId") String id){
     
         try {
            int tempid= Integer.parseInt(id);
             
-            return productService.getProductbyId(tempid);
+            return PetService.getPetbyId(tempid);
         } catch (Exception e) {
-            return productService.getProductbyName(id);
+            return PetService.getPetbyName(id);
         }
       
     }
       
-    @RequestMapping(path="api/put/{productId}", method = RequestMethod.PUT)
-    public void updateProduct(@PathVariable("productId") int id,
+    @RequestMapping(path="api/put/{PetId}", method = RequestMethod.PUT)
+    public void updatePet(@PathVariable("PetId") int id,
                               @RequestParam(required = false) String name,
                               @RequestParam(required = false) String description,
                               @RequestParam(required = false) Integer price,
                               @RequestParam(required = false) Integer amount)
                               {
                         
-                    productService.updateProduct(id, name==null?"":name, description==null?"":description, amount==null?-1:amount, price==null?-1:price);
+                    PetService.updatePet(id, name==null?"":name, description==null?"":description, amount==null?-1:amount, price==null?-1:price);
                 
     }
    
     @RequestMapping(value ="/api/post", method =  RequestMethod.POST)
-    public void  registerProduct(@RequestBody ProductModel product){
-        productService.addNewProduct(product);
+    public void  registerPet(@RequestBody PetModel Pet){
+        PetService.addNewPet(Pet);
     }
  
-    @DeleteMapping(path= "api/delete/{productId}")
-    public void deleteProduct(@PathVariable("productId")int id){
-      productService.deleteProduct(id);
+    @DeleteMapping(path= "api/delete/{PetId}")
+    public void deletePet(@PathVariable("PetId")int id){
+      PetService.deletePet(id);
     }
         
     

@@ -29,19 +29,17 @@ public class PetService {
        
     }
     @Transactional
-    public void updateProduct(int id,String name, String description, Integer amount, Integer price){
-       PetModel tempProduct=rInterface.findById(id).get().orElseThrow(() -> new IllegalStateException("no existe mascota con id "+id));
-       if (name.length()>0) {tempProduct.setName(name);}
-       if (description.length()>0) {tempProduct.setDescription(description);}
-     
- 
-       if (amount>-1) {tempProduct.setAmount(amount);}
-       if (price>-1) {tempProduct.setPrice(price);}
-       rInterface.save(tempProduct);
+    public void updatePet(int id,String name, String description, String race, int age){
+       PetModel tempPet=rInterface.findById(id).get().orElseThrow(() -> new IllegalStateException("no existe mascota con id "+id));
+       if (name.length()>0) {tempPet.setName(name);}
+       if (description.length()>0) {tempPet.setDescription(description);}
+       if (race.lenght()>0){tempPet.setRace(race)} 
+       if (age>-1) {tempPet.setAge(age);}
+       rInterface.save(tempPet);
 
     }
     public void deletePet(int id) {
-        rInterface.deleteById(id).orElseThrow(() -> new IllegalStateException("no existe mascota con id "+id));
+        rInterface.deleteById(id);
     }
 
     public List<PetModel> getPetByName(String name) {
@@ -49,7 +47,7 @@ public class PetService {
     }
 
     public List<PetModel> getPetById(int id) {
-        return List.of(rInterface.findById(id).orElseThrow(() -> new IllegalStateException("no existe producto con el id "+id)));
+        return List.of(rInterface.findById(id).orElseThrow(() -> new IllegalStateException("no existe Peto con el id "+id)));
     }
     
 }

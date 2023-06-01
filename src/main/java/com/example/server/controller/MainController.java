@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver;
 
-import com.example.model.PetModel;
-import com.example.service.PetService;
+import com.example.server.model.PetModel;
+import com.example.server.service.PetService;
 
 @RestController
 
@@ -43,39 +43,31 @@ public class MainController {
     }
     
 
-    @RequestMapping(value = "/api/get", method = RequestMethod.GET)
-    @ResponseBody
-    public List<PetModel> getAllPets(){
-        System.out.println("a");
-        return PetService.getPets();
-    }
-    @RequestMapping(value = "/api/sortbyprice", method = RequestMethod.GET)
-    @ResponseBody
-    public List<PetModel> getSortedPrice(){
-        return PetService.getSortedPrice();
-    }
+    // @RequestMapping(value = "/api/get", method = RequestMethod.GET)
+    // @ResponseBody
+    // public List<PetModel> getAllPets(){
+    //     return PetService.getPets();
+    // }
+   
     @RequestMapping(value = "/api/getPet/{PetId}", method = RequestMethod.GET)
     public List<PetModel> getPetById(@PathVariable("PetId") String id){
     
-        try {
+ 
            int tempid= Integer.parseInt(id);
             
-            return PetService.getPetbyId(tempid);
-        } catch (Exception e) {
-            return PetService.getPetbyName(id);
-        }
+            return PetService.getPetById(tempid);
+        
       
     }//
       
     @RequestMapping(path="api/put/{PetId}", method = RequestMethod.PUT)
     public void updatePet(@PathVariable("PetId") int id,
-                              @RequestParam(required = false) String name,
                               @RequestParam(required = false) String description,
-                              @RequestParam(required = false) Integer price,
-                              @RequestParam(required = false) Integer amount)
+                              @RequestParam(required = false) String race,
+                              @RequestParam(required = false) Integer age)
                               {
                         
-                    PetService.updatePet(id, name==null?"":name, description==null?"":description, amount==null?-1:amount, price==null?-1:price);
+                    PetService.updatePet(id, description==null?"":description, race==null?"":race, age==null?-1:age);
                 
     }
    

@@ -11,5 +11,5 @@ import com.example.server.model.PetModel;
 @Repository
 @Transactional
 public interface RepositoryInterface extends JpaRepository<PetModel, Integer>{
-    PetModel findByName(String name);
+     
 }

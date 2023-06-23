@@ -1,7 +1,8 @@
 package com.example.server.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityManager;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -9,23 +10,23 @@ import jakarta.persistence.Table;
  
 
 @Entity
-@Table(name="PET")
+@Table(name="DOGMODEL")
 public class PetModel {
-    
+
     private int id;
-    private String name;
-    private String description;
+    private String info;
     private String race;
     private int age;
+    private int locationId;
      
 
     public PetModel(){
        
     }
 
-    public PetModel(int id,String name, String description, String race, int age){
-        this.name=name;
-        this.description=description;
+    public PetModel(int id, String info, String race, int age){
+       
+        this.info=info;
         this.id=id;
         this.race=race;
         this.age=age;
@@ -34,23 +35,22 @@ public class PetModel {
     }
 //.
 
-public PetModel(String name, String description,String race, int age){
-    this.name=name;
-    this.description=description;
+public PetModel( String info,String race, int age,int locationId){
+    this.locationId=locationId;
+    this.info=info;
     this.race=race;
     this.age=age;
  
 }
 @Id
 @GeneratedValue (strategy = GenerationType.IDENTITY)
+@Column(name = "dogid")
     public int getId() {
         return id;
     }
-    public String getName() {
-        return name;
-    }
-    public String getDescription() {
-        return description;
+  
+    public String getInfo() {
+        return info;
     }
     public String getRace() {
         return race;
@@ -58,14 +58,17 @@ public PetModel(String name, String description,String race, int age){
     public int getAge() {
         return age;
     }
+
+    public void setlocationId(int locationId) {
+        this.locationId = locationId;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setDescription(String description) {
-        this.description = description;
+ 
+    public void setInfo(String info) {
+        this.info = info;
     }
     public void setRace(String race) {
         this.race = race;
@@ -73,7 +76,10 @@ public PetModel(String name, String description,String race, int age){
     public void setAge(int age) {
         this.age = age;
     }
-
+   @Column(name = "positionid")
+    public int getlocationId() {
+        return locationId;
+    }
 
 
 

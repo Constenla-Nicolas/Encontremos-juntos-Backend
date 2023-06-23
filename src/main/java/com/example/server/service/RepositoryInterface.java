@@ -11,5 +11,9 @@ import com.example.server.model.PetModel;
 @Repository
 @Transactional
 public interface RepositoryInterface extends JpaRepository<PetModel, Integer>{
+<<<<<<< HEAD
    
+=======
+     
+>>>>>>> 9e72e32 (reworked mysql db)
 }

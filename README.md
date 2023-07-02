@@ -1,1 +1,1 @@
-# Encontremos-juntos-backend-api
+Repositorio del Backend de la app "Encontremos juntos" , app centrada en registrar perros callejeros,con el propósito de darles visibilidad hacia que aquellos que puedan permitirse levantarlos y darles un hogar. Desarrollado en Spring.

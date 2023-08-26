@@ -26,6 +26,6 @@ create table dogModel(
     insert into dogModel(race,info,age,positionid) values("Husky","a",12,12);
 
 insert into dogLocation(la,lo,calle1,calle2,alturaDeCalle) values(0.65444,0.99333,"prueba1","prueba2",12);
-
-insert into 
-
+ 
+insert into doglocation(la,lo,calle1,calle2,alturaDeCalle) values(-34.591095, -58.446736,"prueba1","prueba2",8);
+   insert into dogModel(race,info,age,positionid) values("pomel","a",12,2);

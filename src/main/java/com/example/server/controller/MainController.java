@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver;
 
+import com.example.server.model.LocationModel;
 import com.example.server.model.PetModel;
 import com.example.server.service.PetService;
 
@@ -41,24 +42,21 @@ public class MainController {
     public List<PetModel> main(){
         return PetService.getPets();
     }
-    
-
-    // @RequestMapping(value = "/api/get", method = RequestMethod.GET)
-    // @ResponseBody
-    // public List<PetModel> getAllPets(){
-    //     return PetService.getPets();
-    // }
-   
+  
     @RequestMapping(value = "/api/getPet/{PetId}", method = RequestMethod.GET)
     public List<PetModel> getPetById(@PathVariable("PetId") String id){
-    
  
            int tempid= Integer.parseInt(id);
             
             return PetService.getPetById(tempid);
         
       
-    }//
+    }
+    
+    @RequestMapping(value = "/api/getAllCords",method=RequestMethod.GET)
+    public List<LocationModel> getCords(){
+      return PetService.getLocations();
+    }
       
     @RequestMapping(path="api/put/{PetId}", method = RequestMethod.PUT)
     public void updatePet(@PathVariable("PetId") int id,

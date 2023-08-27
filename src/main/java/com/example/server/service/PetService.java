@@ -11,44 +11,50 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.server.service.RepositoryInterface;
+import com.example.server.service.PetModelInterface;
+import com.example.server.model.LocationModel;
 import com.example.server.model.PetModel;
  
 @Service
 public class PetService {
     PetModel tempPet;
     @Autowired
-  private RepositoryInterface rInterface;
-   
+  private PetModelInterface petInterface;
+  @Autowired
+   private PetLocationInterface locationInterface;
     public List<PetModel> getPets(){
-        return  rInterface.findAll();
+        return  petInterface.findAll();
     }
  
     
     public void addNewPet(PetModel pet) {
-        rInterface.save(pet);
+        petInterface.save(pet);
        
     }
     @Transactional
     public void updatePet(int id, String description, String race, int age){
      
-        if(rInterface.findById(id).get()!=null)
-        {tempPet=rInterface.findById(id).get();}
+        if(petInterface.findById(id).get()!=null)
+        {tempPet=petInterface.findById(id).get();}
         else{}
     
        if (description.length()>0) {tempPet.setInfo(description);}
        if (race.length()>0){tempPet.setRace(race);} 
        if (age>-1) {tempPet.setAge(age);}
-       rInterface.save(tempPet);
+       petInterface.save(tempPet);
 
     }
     public void deletePet(int id) {
-        rInterface.deleteById(id);
+        petInterface.deleteById(id);
+    }
+
+    public List<LocationModel> getLocations(){
+        return locationInterface.findAll();
     }
 
  
     public List<PetModel> getPetById(int id) {
-        return List.of(rInterface.findById(id).orElseThrow(() -> new IllegalStateException("no existe Peto con el id "+id)));
+        return List.of(petInterface.findById(id).orElseThrow(() -> new IllegalStateException("no existe Pet con el id "+id)));
     }
     
 }
